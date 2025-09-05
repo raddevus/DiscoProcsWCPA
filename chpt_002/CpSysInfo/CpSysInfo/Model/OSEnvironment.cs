@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Text.Json;
+
 namespace CpSysInfo.Model;
 
 public class OSEnvironment{
@@ -15,6 +17,6 @@ public class OSEnvironment{
       Console.WriteLine($"{allEnvVars.GetType()} : {allEnvVars.Count()}");
       foreach (DictionaryEntry k in allEnvVars) { 
          Console.WriteLine($"{k.Key} => {k.Value}"); }
-      return "complete";
+      return JsonSerializer.Serialize(allEnvVars);
    }
 }

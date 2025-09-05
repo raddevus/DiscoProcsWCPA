@@ -8,7 +8,7 @@ public class EnvironmentTest
     {
       Console.WriteLine("### This is the test output. ###");
       OSEnvironment ose = new();
-      ose.GetAllEnvironmentVars();
+      Console.WriteLine(ose.GetAllEnvironmentVars());
       
     }
 }
