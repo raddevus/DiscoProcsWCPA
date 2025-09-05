@@ -1,4 +1,5 @@
-﻿namespace CpSysInfo.Tests;
+﻿using CpSysInfo.Model;
+namespace CpSysInfo.Tests;
 
 public class EnvironmentTest 
 {
@@ -6,5 +7,8 @@ public class EnvironmentTest
     public void Test1()
     {
       Console.WriteLine("### This is the test output. ###");
+      OSEnvironment ose = new();
+      ose.GetAllEnvironmentVars();
+      
     }
 }
