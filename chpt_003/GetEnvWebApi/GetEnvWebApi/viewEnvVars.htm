@@ -12,6 +12,9 @@
 
          function initApp(){
             console.log("app is initialized.");
+            fetch("http://localhost:5272/getEnvVars")
+               .then(response => response.json())
+               .then(data => console.log(JSON.stringify(data)));
          }
       </script>
    </body>
