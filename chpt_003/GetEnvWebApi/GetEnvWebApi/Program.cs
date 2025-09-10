@@ -40,6 +40,14 @@ app.MapGet("/getEnvVars", () =>{
   return ose.GetAllEnvironmentVars();
 });
 
+app.MapGet("viewEnvVars", async context =>
+{
+    var html = await File.ReadAllTextAsync("viewEnvVars.htm");
+    context.Response.ContentType = "text/html";
+    await context.Response.WriteAsync(html);
+});
+
+
 app.Run();
 
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
