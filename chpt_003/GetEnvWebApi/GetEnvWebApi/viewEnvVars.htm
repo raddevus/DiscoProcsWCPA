@@ -4,17 +4,59 @@
       <title>
          View Env Vars
       </title>
+      <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+      <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+      <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+     <style>
+       body { font-family: sans-serif; padding: 20px; }
+       table { border-collapse: collapse; width: 100%; }
+       th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+       th { background-color: #f4f4f4; }
+     </style>
    </head>
    <body>
-      <p> content will appear here</p>
-      <script>
+      <div id="root"></div>
+
+      <script type="text/babel">
+       var envVars = [];
+
+       function App() {
+         return (
+           <table>
+             <thead>
+               <tr>
+                 <th>Key</th>
+                 <th>Value</th>
+               </tr>
+             </thead>
+             <tbody>
+               {envVars.map((item, index) => (
+                 <tr key={index}>
+                   <td>{item.Key}</td>
+                   <td>{item.Value}</td>
+                 </tr>
+               ))}
+             </tbody>
+           </table>
+         );
+       }
+
          window.addEventListener("load", initApp);
 
          function initApp(){
+            // when the web page has completely loaded,
+            // then we make a fetch call to the webapi to get the 
+            // envinronment vars
             console.log("app is initialized.");
             fetch("http://localhost:5272/getEnvVars")
                .then(response => response.json())
-               .then(data => console.log(JSON.stringify(data)));
+               // when the JSON is received from api, then we can render
+               .then(data => { 
+                  envVars = data; console.log(JSON.stringify(envVars))
+
+                   const root = ReactDOM.createRoot(document.getElementById("root"));
+                   root.render(<App />);
+               });
          }
       </script>
    </body>
