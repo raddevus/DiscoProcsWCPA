@@ -1,6 +1,6 @@
 using System.Diagnostics;
 
-namespace NewLibre;
+namespace CpSysInfo.Model;
 public class ProcInfo{
     public Int32 Id{get;set;}
     public string Name{get;set;}
@@ -29,9 +29,11 @@ public class ProcInfo{
         Created = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         try{
             if (Filename != null && Filename != String.Empty){
+               if (File.Exists(Filename)){
                 FileInfo fi = new FileInfo(Filename);
                 FileSize = fi.Length;
                 FileDate = fi.CreationTime.ToString("yyyy-MM-dd HH:mm:ss");
+               }
             }
         }
         catch (Exception ex){
