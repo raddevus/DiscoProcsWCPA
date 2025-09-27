@@ -1,7 +1,7 @@
 using CpSysInfo.Model;
 
 namespace CpSysInfo.Service;
-class ProcInfoService{
+public class ProcInfoService{
    public IEnumerable<ProcInfo> GetAllProcesses()
     {
         foreach (var proc in System.Diagnostics.Process.GetProcesses())
