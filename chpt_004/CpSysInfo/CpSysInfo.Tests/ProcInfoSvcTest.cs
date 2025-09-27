@@ -9,7 +9,9 @@ public class ProcInfoSvcTest
     {
       Console.WriteLine("### ProcInfoSvcTest ###");
       ProcInfoService pis = new();
-      pis.GetAllProcesses();
+      var allProcInfo = pis.GetAllProcesses();
+      Console.WriteLine($"{allProcInfo.Count()}");
+      Console.WriteLine($"first: {allProcInfo.First()}");
       
     }
 }
