@@ -32,7 +32,8 @@ public class ProcInfoSvcTest
        ProcInfoService pis = new();
        var allProcInfo = pis.GetAllProcesses();
       Console.WriteLine($"running process count: {allProcInfo.Count()}");
-      var namedProcs = allProcInfo.Where(item => !string.IsNullOrEmpty(item.Name));
+      var namedProcs = allProcInfo.Where(item => !string.IsNullOrEmpty(item.Name))
+         .OrderBy(item => item.Name);
       Console.WriteLine($"{namedProcs.Count()} process(es) have a name.");
       foreach (ProcInfo pi in namedProcs){
          Console.WriteLine($" filename : {pi.Name} pid: {pi.ProcId}");
