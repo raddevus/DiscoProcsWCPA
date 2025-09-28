@@ -39,5 +39,18 @@ public class ProcInfoSvcTest
          Console.WriteLine($" filename : {pi.Name} pid: {pi.ProcId}");
       }
     }
+
+    [Fact]
+    public void CompareFileNames(){
+       ProcInfoService pis = new();
+       var allProcInfo = pis.GetAllProcesses();
+      Console.WriteLine($"running process count: {allProcInfo.Count()}");
+      var namedProcs = allProcInfo.Where(item => !string.IsNullOrEmpty(item.Name))
+         .OrderBy(item => item.Name);
+      Console.WriteLine($"{namedProcs.Count()} process(es) have a name.");
+      foreach (ProcInfo pi in namedProcs){
+         Console.WriteLine($"{pi.Name} : {pi.Filename}");
+      }
+    }
 }
 
