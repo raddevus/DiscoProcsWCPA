@@ -33,6 +33,7 @@ public class ProcInfo{
                 FileInfo fi = new FileInfo(Filename);
                 FileSize = fi.Length;
                 FileDate = fi.CreationTime.ToString("yyyy-MM-dd HH:mm:ss");
+                FileHash = "fake-value"; 
                }
             }
         }

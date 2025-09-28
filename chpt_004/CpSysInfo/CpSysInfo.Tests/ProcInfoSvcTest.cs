@@ -11,7 +11,7 @@ public class ProcInfoSvcTest
       ProcInfoService pis = new();
       var allProcInfo = pis.GetAllProcesses();
       Console.WriteLine($"{allProcInfo.Count()}");
-      Console.WriteLine($"first: {allProcInfo.First()}");
+      Console.WriteLine($"first: {allProcInfo.First().Name}: {allProcInfo.First().FileHash}");
       
     }
 }
