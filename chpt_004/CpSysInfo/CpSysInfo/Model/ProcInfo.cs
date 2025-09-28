@@ -1,6 +1,7 @@
 using System.Diagnostics;
 
 namespace CpSysInfo.Model;
+
 public class ProcInfo{
     public Int32 Id{get;set;}
     public string Name{get;set;}
@@ -33,7 +34,7 @@ public class ProcInfo{
                 FileInfo fi = new FileInfo(Filename);
                 FileSize = fi.Length;
                 FileDate = fi.CreationTime.ToString("yyyy-MM-dd HH:mm:ss");
-                FileHash = "fake-value"; 
+                FileHash = Util.GenSha256FromFileBytes(Filename); 
                }
             }
         }
