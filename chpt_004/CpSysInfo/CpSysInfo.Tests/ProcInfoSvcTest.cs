@@ -61,7 +61,7 @@ public class ProcInfoSvcTest
       var namedProcs = allProcInfo.Where(item => !string.IsNullOrEmpty(item.Name))
          .DistinctBy(item => new {item.Name, item.Filename})
          .OrderBy(item => item.Name);
-      Console.WriteLine($"{namedProcs.Count()} process(es) have a name.");
+      Console.WriteLine($"{namedProcs.Count()} are unique by Name and Filename.");
       foreach (ProcInfo pi in namedProcs){
          Console.WriteLine($"{pi.Name} : {pi.Filename}");
       }
