@@ -66,5 +66,17 @@ public class ProcInfoSvcTest
          Console.WriteLine($"{pi.Name} : {pi.Filename}");
       }
     }
+
+    [Fact]
+    public void GetUniqueProcsTest(){
+       ProcInfoService pis = new();
+       var allProcInfo = pis.GetAllUniqueProcesses();
+      foreach (ProcInfo pi in allProcInfo){
+         Console.WriteLine($"{pi.Name} : {pi.Filename}");
+      }
+
+      Console.WriteLine($"UNIQUE process count: {allProcInfo.Count()}");
+    }
+    
 }
 
